@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:edit, :update, :destroy]
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.create comment_params
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to post_path(@post)
+      redirect_to post_path @post
     else
-      render "new"
+      render :new
     end
   end
 
@@ -17,21 +17,21 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to post_path(@post)
+    if @comment.update comment_params
+      redirect_to post_path @post
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to post_path(@post)
+    redirect_to post_path @post
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit :content
   end
 
   def find_post
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   end
 
   def find_comment
-    @comment = @post.comments.find(params[:id])
+    @comment = @post.comments.find params[:id]
   end
 
 end
