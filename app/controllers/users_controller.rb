@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by id: params[:id]
+    @posts = @user.posts.paginate(page: params[:page])
     render file: "public/404.html", layout: false unless @user
   end
 

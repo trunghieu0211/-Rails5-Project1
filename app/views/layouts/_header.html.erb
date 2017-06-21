@@ -5,6 +5,8 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
+          <li><%= link_to "Create New Post", new_post_path %></li>
+          <li><%= link_to "My post", user_path(current_user) %></li>
           <li class="dropdown">
             <%= link_to "#", class: "dropdown-toggle", "data-toggle": "dropdown" do %>
               <%= t ".account" %> <b class="caret"></b>
