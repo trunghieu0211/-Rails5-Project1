@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   before_save {email.downcase!}
 
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true, length: {maximum: Settings.user.max_name_size}
   validates :email, presence: true, length: {maximum: Settings.user.max_email_size},

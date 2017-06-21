@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title, class: "form-control"%>
+
+  <%= f.label :body%>
+  <%= f.text_area :body, class: "form-control"%>
+
+   <%= f.submit "Create", class: "btn btn-primary" %>
+<% end %>
