@@ -3,4 +3,4 @@ user:
   max_email_size: 255
   min_password_size: 6
 helper:
-  gravatar_size: 80
+  gravatar_size: 50

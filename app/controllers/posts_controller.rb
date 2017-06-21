@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :find_post, except: [:index, :new, :create]
 
   def index
-    @post = Post.all.order("created_at DESC")
+    @posts = Post.post_desc.paginate page: params[:page], per_page: 10
+    @hot_users = User.hot_user
   end
 
   def show
@@ -41,7 +42,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit :title, :body
+    params.require(:post).permit :title, :body, :user_id
   end
 
   def find_post

@@ -3,18 +3,28 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <div class="avatar_post"><%= link_to gravatar_for(@user), user_path(@user) %></div>
+        <p><%= @user.name %></p>
       </h1>
     </section>
+      <section class="stats">
+        <%= render "shared/stats" %>
+      </section>
   </aside>
   <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <br>
     <% if @user.posts.any? %>
-      <h3>Post (<%= @user.posts.count %>)</h3>
-      <ol>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="microposts">
         <%= render @posts %>
       </ol>
-      <%= will_paginate @posts %>
+      <div class="text-center">
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
+    <% elsif current_user.id != @user.id %>
+        <div class="alert alert-info" role="alert"><div class="text-center">
+Post does not exist. Please come back later</div></div>
     <% end %>
   </div>
 </div>

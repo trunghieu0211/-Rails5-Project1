@@ -1,13 +1,40 @@
-<% @post.each do |post|%>
 <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-     <!--  <img src="..." alt="..."> -->
-      <div class="caption">
-        <h3><%= post.title %></h3>
-        <p><%= post.body[1..50] %> ...</p>
-        <p><%= link_to "View", post_path(post) %></p>
-    </div>
+  <div class="col-sm-4 col-md-3" style="float: right;">
+    <div class="hot-user"><h2>HOT USERS</h2></div>
+    <% @hot_users.each do |hot_user| %>
+    <section class="user_info">
+      <div class="avatar_post"><%= link_to gravatar_for(hot_user), user_path(hot_user) %></div>
+      <p style="padding-top: 20px;"><%= link_to hot_user.name, user_path(hot_user) %></p>
+    </section>
+      <section class="stats stats-user-post" style="padding-top: 20px;">
+        <div class="stats">
+          <a href="<%= followers_user_path(hot_user) %>">
+            <strong id="followers" class="stat">
+              <%= hot_user.followers.count %>
+            </strong>
+            followers
+          </a>
+        </div>
+      </section>
+        <% end %>
   </div>
+  <% @posts.each do |post|%>
+    <div class="col-sm-8 col-md-9">
+      <div class="thumbnail">
+        <div class="avatar_post"><%= link_to gravatar_for(post.user), user_path(post.user) %></div>
+        <div class="titlepost">
+          <%= link_to post.user.name, user_path(post.user) %>
+          <h3><%= link_to post.title, post_path(post) %></h3>
+          <p><%= post.body[0..100]%> ...</p>
+        </div>
+        <div class="caption">
+          <p><%= link_to "READ MORE", post_path(post), class: "btn btn-primary" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="text-center">
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  </div>
+
 </div>
-<% end %>
