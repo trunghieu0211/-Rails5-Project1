@@ -35,11 +35,14 @@ class User < ApplicationRecord
 
   class << self
     def count_follower
-      joins(:followers).group("users.id").count.sort_by {|key, value| value}.reverse.first(5)
+      joins(:followers).group("users.id").count.sort_by{|key, value| value}.
+      reverse.first(Settings.user.number_user_follower)
     end
 
     def hot_user
-      User.find User.count_follower.transpose[0]
+      if User.count_follower.count > 0
+        User.find User.count_follower.transpose[0]
+      end
     end
   end
 end

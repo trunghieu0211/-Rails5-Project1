@@ -2,5 +2,9 @@ user:
   max_name_size: 50
   max_email_size: 255
   min_password_size: 6
+  number_user_follower: 5
+  number_user: 12
+  number_post: 10
 helper:
   gravatar_size: 50
+

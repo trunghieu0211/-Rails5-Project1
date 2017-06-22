@@ -17,8 +17,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build post_params
 
     if @post.save
-      redirect_to user_path current_user
+      flash[:success] = t ".created_post"
+      redirect_to @post
     else
+      flash.now[:danger] = t ".create_fail"
       render :new
     end
   end

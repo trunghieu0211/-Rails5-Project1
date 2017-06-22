@@ -1,28 +1,35 @@
+<% provide :title, @post.title %>
+
 <div class="col-md-8 col-md-offset-2">
-<div>
-<h3 style="font-weight: bold;"><%= @post.title %></h3>
-<p style="border-bottom: solid 1px #e8e8e8">Post by <%= link_to @post.user.name, user_path(@post.user) %> <%= time_ago_in_words(@post.created_at) %> ago</p>
-<p style="border-bottom: solid 1px #e8e8e8"><%= @post.body %></p>
-
-<h3>Comment:</h3>
-<%= render @post.comments %>
-
-<h3 class="reply-to-msg">Reply to Message:</h3>
-<% if (logged_in? && current_user.following?(@post.user)) || (logged_in? && current_user.id == @post.user_id) %>
-<%= render "comments/form"%>
-<% elsif %>
-<%= render "comments/form_not_active" %>
-<% end %>
-<br>
-<div class="links btn-group">
-<%= link_to "Back", root_path, class: "btn btn-default"%>
-<% if logged_in? %>
-  <% if current_user.id == @post.user_id %>
-    <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default"%>
-    <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"%>
-<% end %>
-<% end %>
-</div>
-</div>
+  <h3 style="font-weight: bold;"><%= @post.title %></h3>
+  <p style="border-bottom: solid 1px #e8e8e8">
+    <%= t ".post_by" %> <%= link_to @post.user.name, user_path(@post.user) %>
+     <%= time_ago_in_words(@post.created_at) %> <%= t ".ago" %>
+  </p>
+  <p style="border-bottom: solid 1px #e8e8e8"><%= @post.body %></p>
+  <h3 style="font-weight: bold;">
+    <%= link_to t(".comment"), "#", id: "comments-link" %>
+  </h3>
+  <section id="comments-section"><%= render @post.comments %></section>
+  <h3 style="font-weight: bold;">
+    <%= t ".reply" %>
+  </h3>
+  <% if (logged_in? && current_user.following?(@post.user)) ||
+   (logged_in? && current_user.id == @post.user_id) %>
+    <%= render "comments/form" %>
+  <% elsif %>
+    <%= render "comments/form_not_active" %>
+  <% end %>
+  <br>
+  <div class="links btn-group">
+    <%= link_to t(".back"), root_path, class: "btn btn-default" %>
+    <% if logged_in? %>
+      <% if current_user.id == @post.user_id %>
+        <%= link_to t(".edit"), edit_post_path(@post), class: "btn btn-warning" %>
+        <%= link_to t(".delete"), post_path(@post), method: :delete,
+         data: {confirm: t(".sure?")}, class: "btn btn-danger" %>
+    <% end %>
+    <% end %>
+  </div>
 </div>
 

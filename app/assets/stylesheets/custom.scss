@@ -4,6 +4,7 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$gray91: #e8e8e8;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -215,7 +216,7 @@ input {
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid #gray91;
   }
   .user {
     margin-top: 5em;
@@ -261,9 +262,9 @@ span.picture {
 }
 
 .comment {
-  border-bottom: 1px solid #e8e8e8;
-  padding-top: 5px 0;
+  border-bottom: 1px solid #gray91;
   box-sizing: border-box;
+  padding-top: 5px 0;
 
   .comment-posted-by {
     font-size: 1em;
@@ -278,7 +279,7 @@ span.picture {
 }
 
 .stats-user-post{
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #gray91;
 }
 
 .stats a{
@@ -286,7 +287,7 @@ span.picture {
 }
 
 .hot-user{
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #gray91;
 }
 
 .avatar_comment img{

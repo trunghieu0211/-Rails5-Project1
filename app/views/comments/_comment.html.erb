@@ -1,19 +1,25 @@
 <div class="comment">
-<div class="avatar_post avatar_comment"><%= link_to gravatar_for(comment.user), user_path(comment.user) %></div>
-<p class="comment-content"><%= link_to comment.user.name, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago</p>
-<p class="comment-posted-by"><%= comment.content %></p>
-
-<div class="links">
-  <% if logged_in? %>
-    <% if comment.user_id == current_user.id %>
-      <%= link_to "Edit", edit_post_comment_path(comment.post, comment)%>
-       <% end %>
-      <% if @post.user_id == current_user.id || current_user.id == comment.user_id %>
-      <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Are you sure?"}%>
+  <div class="avatar_post avatar_comment">
+    <%= link_to gravatar_for(comment.user), user_path(comment.user) %>
+  </div>
+  <p class="comment-content">
+    <%= link_to comment.user.name, user_path(comment.user) %>
+     <%= time_ago_in_words comment.created_at  %> <%= t ".ago" %>
+  </p>
+  <p class="comment-posted-by">
+    <%= comment.content %>
+  </p>
+  <div class="links">
+    <% if logged_in? %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to t(".edit"), edit_post_comment_path(comment.post, comment) %>
       <% end %>
-
-  <% end %>
-</div>
+      <% if @post.user_id == current_user.id || current_user.id == comment.user_id %>
+        <%= link_to t(".delete"), post_comment_path(comment.post, comment),
+         method: :delete, data: {confirm: t(".sure?")}%>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 

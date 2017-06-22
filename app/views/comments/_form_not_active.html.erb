@@ -1,5 +1,7 @@
 <%= form_for [@post, @post.comments.build] do |f| %>
-<%= f.text_area :content, label: "Comment", class: "form-control", disabled: true %>
-<%= f.button :submit, class: "btn btn-default", disabled: true %>
+
+  <%= f.text_area :content, class: "form-control", disabled: true %>
+
+  <%= f.button :submit, class: "btn btn-default", disabled: true %>
 <% end %>
 
