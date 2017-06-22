@@ -1,0 +1,13 @@
+prefix=/home/trunghieu/Documents/rails pull/Project1/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.0/ports/x86_64-pc-linux-gnu/libxml2/2.9.4
+exec_prefix=${prefix}
+libdir=/home/trunghieu/Documents/rails pull/Project1/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.0/ports/x86_64-pc-linux-gnu/libxml2/2.9.4/lib
+includedir=${prefix}/include
+modules=1
+
+Name: libXML
+Version: 2.9.4
+Description: libXML library version2.
+Requires:
+Libs: -L${libdir} -lxml2
+Libs.private:   -lz   -lm  
+Cflags: -I${includedir}/libxml2 
