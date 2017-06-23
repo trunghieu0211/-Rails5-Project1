@@ -1,9 +1,11 @@
 <%= form_for @post do |f| %>
-  <%= f.label :title%>
-  <%= f.text_field :title, class: "form-control"%>
+  <%= render "shared/error_messages", tmp: @post %>
 
-  <%= f.label :body%>
-  <%= f.text_area :body, class: "form-control"%>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
 
-   <%= f.submit "Create", class: "btn btn-primary" %>
+  <%= f.label :body %>
+  <%= f.text_area :body, class: "form-control", size: "20x15" %>
+
+   <%= f.submit t(".create"), class: "btn btn-primary" %>
 <% end %>

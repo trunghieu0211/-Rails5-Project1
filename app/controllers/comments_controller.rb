@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to post_path @post
+      render json: {status: :success, html: render_to_string(@comment)}
     else
-      render :new
+      render json: {status: :error, html:render_to_string(@comment)}
     end
   end
 
@@ -41,5 +41,4 @@ class CommentsController < ApplicationController
   def find_comment
     @comment = @post.comments.find params[:id]
   end
-
 end

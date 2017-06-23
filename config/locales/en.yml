@@ -9,6 +9,8 @@ en:
       logout: "Log out"
       login: "Log in"
       signup: "Sign up"
+      create_post: "Create New Post"
+      my_post: "My post"
   users:
     new:
       signup: "Sign up"
@@ -19,8 +21,52 @@ en:
       pass_con: "Confirmation"
       create: "Create my account"
     create:
-      success: "Welcome to the Sample App!"
+      success: "Welcome to NTH"
       error: "Sign up failed"
+    follow:
+      follow: "Follow"
+    unfollow:
+      unfollow: "Unfollow"
+    index:
+      all_user: "All users"
+      following: "following"
+      followers: "followers"
+      unfollow: "Unfollow"
+      follow: "Follow"
+    show:
+      posts: "Posts"
+      post_not_exist: "Post does not exist. Please come back later"
+    show_follow:
+      view_profile: "View profile"
+      post: "Post:"
+  posts:
+    create:
+      created_post: "Created post successed!"
+      create_fail: "Create post failed"
+    form:
+      create: "Create"
+    post:
+      posted: "Posted"
+      ago: "ago."
+      delete: "Delete"
+      sure?: "You sure?"
+    edit:
+      edit_post: "Edit post"
+    index:
+      home: "Home"
+      hot_user: "HOT USER"
+      read_more: "READ MORE"
+    new:
+      new_post: "New Post"
+      post_by: "Post by"
+      ago: "ago."
+      comment: "Comment:"
+    show:
+      reply: "Reply to Message:"
+      back: "Back"
+      edit: "Edit"
+      delete: "Delete"
+      sure?: "Are you sure?"
   helpers:
     application_helper:
       app: "Ruby On Rails Tutorial"
@@ -36,3 +82,11 @@ en:
       login: "Log in"
       signup: "Sign up now!"
       newuser: "New user?"
+  comments:
+    comment:
+      ago: "ago"
+      edit: "Edit"
+      delete: "Delete"
+      sure?: "Are you sure?"
+    edit:
+      edit: "Edit comment"

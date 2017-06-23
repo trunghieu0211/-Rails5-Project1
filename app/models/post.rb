@@ -5,5 +5,6 @@ class Post < ApplicationRecord
   scope :post_desc, ->{order(created_at: :desc)}
 
   validates :user_id, presence: true
+  validates :title, presence: true
   validates :body, presence: true
 end

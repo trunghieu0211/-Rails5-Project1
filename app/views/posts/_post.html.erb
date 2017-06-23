@@ -1,15 +1,24 @@
 <li id="<%= post.id %>">
-  <div class="avatar_post"><%= link_to gravatar_for(post.user, size: 50), post.user %></div>
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span><h4><%= link_to post.title, post_path(post) %></h4></span>
-  <span class="content"><%= post.body[0..50] %> ...</span>
+  <div class="avatar_post">
+    <%= link_to gravatar_for(post.user, size: Settings.helper.gravatar_size),
+     post.user %>
+  </div>
+  <span class="user">
+    <%= link_to post.user.name, post.user %>
+  </span>
+  <span>
+    <h4><%= link_to post.title, post_path(post) %></h4>
+  </span>
+  <span class="content">
+    <%= post.body[0..50] %> ...
+  </span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <%= t ".posted" %> <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
   <% if logged_in? %>
-  <% if current_user.id == post.user_id %>
-    <%= link_to "delete", post, method: :delete,
-     data: { confirm: "You sure?" } %>
-  <% end %>
+    <% if current_user.id == post.user_id %>
+      <%= link_to t(".delete"), post, method: :delete,
+       data: { confirm: t(".sure?") } %>
+    <% end %>
   <% end %>
   </span>
 </li>

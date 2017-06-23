@@ -1,8 +1,3 @@
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap
-//= require turbolinks
-//= require_tree .
 jQuery(document).ready(function($) {
   $('.new_comment').submit(function(event) {
       event.preventDefault();
