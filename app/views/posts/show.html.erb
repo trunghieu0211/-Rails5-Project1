@@ -1,0 +1,26 @@
+<div class="col-md-8 col-md-offset-2">
+<div>
+<h2><%= @post.title %></h2>
+<p><em>Post by <%= @post.user.name %> <%= time_ago_in_words(@post.created_at) %> ago</em></p>
+<p><%= @post.body %></p>
+
+<h3>Comment:</h3>
+<%= render @post.comments %>
+
+<% if logged_in? %>
+<h3 class="reply-to-msg">Reply to Message:</h3>
+<%= render 'comments/form'%>
+<% end %>
+
+<div class="links btn-group">
+<%= link_to "Back", root_path, class: "btn btn-default"%>
+<% if logged_in? %>
+  <% if current_user.id == @post.user_id%>
+    <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default"%>
+    <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"%>
+<% end %>
+<% end %>
+</div>
+</div>
+</div>
+
