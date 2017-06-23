@@ -6,7 +6,7 @@
     <%= t ".post_by" %> <%= link_to @post.user.name, user_path(@post.user) %>
      <%= time_ago_in_words(@post.created_at) %> <%= t ".ago" %>
   </p>
-  <p style="border-bottom: solid 1px #e8e8e8"><%= @post.body %></p>
+  <div style="border-bottom: solid 1px #e8e8e8"><%= @post.body.to_s.html_safe %></div>
   <h3 style="font-weight: bold;">
     <%= link_to t(".comment"), "#", id: "comments-link" %>
   </h3>

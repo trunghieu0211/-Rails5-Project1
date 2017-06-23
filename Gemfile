@@ -5,6 +5,7 @@ ruby "2.3.1"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "bootstrap-sass", "~> 3.3", ">= 3.3.7"
 gem "carrierwave", "~> 1.0"
+gem "ckeditor", "~> 4.2", ">= 4.2.3"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "jbuilder", "~> 2.5"
@@ -15,6 +16,7 @@ gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "will_paginate-bootstrap"
+gem "faker", "~> 1.7", ">= 1.7.3"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

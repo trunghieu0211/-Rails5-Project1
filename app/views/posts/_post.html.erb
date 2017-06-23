@@ -9,9 +9,6 @@
   <span>
     <h4><%= link_to post.title, post_path(post) %></h4>
   </span>
-  <span class="content">
-    <%= post.body[0..50] %> ...
-  </span>
   <span class="timestamp">
     <%= t ".posted" %> <%= time_ago_in_words(post.created_at) %> <%= t ".ago" %>
   <% if logged_in? %>

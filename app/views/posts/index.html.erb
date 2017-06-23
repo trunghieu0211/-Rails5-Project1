@@ -35,7 +35,7 @@
         <div class="titlepost">
           <%= link_to post.user.name, user_path(post.user) %>
           <h3><%= link_to post.title, post_path(post) %></h3>
-          <p><%= post.body[0..100] %> ...</p>
+          <p><%= post.body[0..100].to_s.html_safe %> ...</p>
         </div>
         <div class="caption">
           <p><%= link_to t(".read_more"), post_path(post), class: "btn btn-primary" %></p>

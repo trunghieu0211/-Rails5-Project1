@@ -25,7 +25,7 @@
       <div class="text-center">
         <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
       </div>
-    <% elsif current_user.id != @user.id %>
+    <% elsif %>
       <div class="alert alert-info" role="alert">
         <div class="text-center">
           <%= t ".post_not_exist" %>
