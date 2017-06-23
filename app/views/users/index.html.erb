@@ -1,0 +1,30 @@
+<div class="row">
+<% @users.each do |user| %>
+  <aside class="col-md-4 user_index">
+    <section class="user_info">
+      <div class="avatar_post"><%= link_to gravatar_for(user), user_path(user) %></div>
+      <h1 style="padding-top: 30px;"><%= link_to user.name, user_path(user) %></h1>
+    </section>
+      <section class="stats" style="padding-top: 20px;">
+        <div class="stats">
+          <a href="<%= following_user_path(user) %>">
+            <strong id="following" class="stat">
+              <%= user.following.count %>
+            </strong>
+            following
+          </a>
+          <a href="<%= followers_user_path(user) %>">
+            <strong id="followers" class="stat">
+              <%= user.followers.count %>
+            </strong>
+            followers
+          </a>
+        </div>
+      </section>
+  </aside>
+<% end %>
+<div class="text-center">
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
+</div>
+
