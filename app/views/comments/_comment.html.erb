@@ -16,7 +16,7 @@
       <% end %>
       <% if @post.user_id == current_user.id || current_user.id == comment.user_id %>
         <%= link_to t(".delete"), post_comment_path(comment.post, comment),
-         method: :delete, data: {confirm: t(".sure?")}%>
+         method: :delete, data: {confirm: t(".sure?")} %>
       <% end %>
     <% end %>
   </div>
